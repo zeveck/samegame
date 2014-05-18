@@ -1,0 +1,28 @@
+// Same Game
+// Rich Conlan
+//
+// Based on Same Game by Ikuo Hirotaha, written for Windows 3.1,
+// itself based on the MS DOS version by Eiji Fukumoto and Wataru Yoshioka.
+
+// v1.0 -- August 04, 2012
+
+Implements Same Game based on Windows 3.1 game of the same name.
+
+// v1.1 -- August 04, 2012
+
+Made it so that singleton blocks aren't killable (this is a dynamic from
+the original game that was skipped in v1.0).
+
+// v1.2 -- August 05, 2012
+// http://www.embracetherandom.com/samegame/samegame_v1_2_src_bundle.zip
+
+Made it so that the title block resizes slightly larger on mobile.
+Made it so the attribution link wraps to the size of the board.
+Made it so that the src link floats right.
+
+// v1.3 -- August 13, 2012
+// http://www.embracetherandom.com/samegame/samegame_v1_3_src_bundle.zip
+
+Moved the screenshot out of the browser view instead of hidden behind the board.
+Fixed animation bug in column slide so that they now slide at even speed even if multiple columns being removed.
+Now previews the blocks to be removed and gives you the value of the removal; requires second click to actually remove.

@@ -1,0 +1,128 @@
+#samescreenshot {
+  position: absolute;
+  left: -1000px;
+  top: 200px;
+}
+
+#sametitleblock {
+  position: relative;
+}
+
+.headerSize {
+  height: 40px;
+  font-size: 40px;
+}
+
+.mobileHeaderSize {
+  height: 70px;
+  font-size: 70px;
+}
+
+#samelogo {
+}
+
+#startbutton {
+  cursor: pointer;
+  margin-left: 50px;
+}
+
+#restartbutton {
+  cursor: pointer;
+  margin-left: 50px;
+}
+
+.headerSize#samepoints {
+  bottom: 15px;
+  font-family: 'Cantora One';
+  position: absolute;
+  left: 420px;
+}
+
+.mobileHeaderSize#samepoints {
+  bottom: 30px;
+  font-family: 'Cantora One';
+  position: absolute;
+  left: 620px;
+}
+
+.headerSize#samescore {
+  bottom: 15px;
+  font-family: 'Cantora One';
+  position: absolute;
+  right: 0px;
+}
+
+.mobileHeaderSize#samescore {
+  bottom: 30px;
+  font-family: 'Cantora One';
+  position: absolute;
+  right: 0px;
+}
+
+#sameboard {
+  background-color: #00bf00;
+  border: black solid 1px;
+  position: relative;
+}
+
+#sameattributionblock {
+  position: relative;
+  top: 5px;
+}
+
+#samesrcbundle {
+  float: right;
+}
+
+.block {
+  font-weight: bold;
+  position: absolute;
+  text-align: center;
+}
+
+.desktopBlockSizes {
+  font-size: 30px;
+  height: 38px;
+  width: 38px;
+}
+
+.mobileBlockSizes {
+  font-size: 70px;
+  height: 78px;
+  width: 78px;
+}
+
+.red {
+  background-color: red; 
+}
+.red:before {
+  content: 'B';
+}
+
+.yellow {
+  background-color: yellow;
+}
+.yellow:before {
+  content: 'D';
+}
+
+.cyan {
+  background-color: #00f0ed;
+}
+.cyan:before {
+  content: 'E';
+}
+
+.blue {
+  background-color: blue;
+}
+.blue:before {
+  content: 'A';
+}
+
+.magenta {
+  background-color: #ff00ff;
+}
+.magenta:before {
+  content: 'C';
+}
