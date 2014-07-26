@@ -1,19 +1,36 @@
 // Written by Rich Conlan
 // v1.3 - August 13, 2012
 
+// v1.4 - July 4, 2014 :: Hacked in adjustments to tweak for Android WebView. Tweaks not reflected in git!
+//                        Added anyLegalMoves() and "Game Over" output for mobile. NOT REFLECTED IN GIT!
+
 // Implementation by RConlan. Based on Same Game by Ikuo Hirotaha, written for 
 // Windows 3.1, itself based on the MS-DOS version by Eiji Fukumoto and Wataru Yoshioka.
+
+// Main namespace.
+function SameGame() {
+
+var ADJUST_COLUMNS = 0
+var ADJUST_ROWS = 0;
 
 // Check for mobile users.
 var isMobile = false;
 var userAgent = navigator.userAgent.toLowerCase();
 if (userAgent.indexOf('android') > 0 ||
     userAgent.indexOf('ipad') > 0 || userAgent.indexOf('iphone') > 0) {
-  isMobile = true;
+//  isMobile = true;
+  document.querySelector("#samelogo").style.display = "none";
+  document.querySelector("#sameattributionblock").style.display = "none";
+  ADJUST_COLUMNS = 1;
+  ADJUST_ROWS = 0;
+  SHOW_SAME_OVER = true;
+} else {
+  document.querySelector("#sameover").style.display = "none";
 }
 
 // Constants.
 var COLORS = ['red', 'yellow', 'cyan', 'blue', 'magenta'];
+var LETTERS = ['B', 'D', 'E', 'A', 'C'];
 var BLOCK_SIZE_IN_PIXELS = isMobile ? 80 : 40;
 var ANIMATION_INCREMENT = isMobile ? 20 : 10;
 var DEFAULT_BLOCK_BORDER = '#111 solid 1px';
@@ -37,10 +54,10 @@ if (isMobile) {
 }
 
 // Board dimensions.
-var boardHeight = window.innerHeight;
-var boardWidth = window.innerWidth;
-var maxColumnHeight = Math.floor((boardHeight  / BLOCK_SIZE_IN_PIXELS)) - 2;
-var columnCount = Math.floor((boardWidth / BLOCK_SIZE_IN_PIXELS)) - 1;
+var boardHeight = document.body.offsetHeight;
+var boardWidth = document.body.offsetWidth;
+var maxColumnHeight = Math.floor((boardHeight  / BLOCK_SIZE_IN_PIXELS)) - 2 + ADJUST_ROWS;
+var columnCount = Math.floor((boardWidth / BLOCK_SIZE_IN_PIXELS)) - 1 + ADJUST_COLUMNS;
 sameboard.style.height = maxColumnHeight * BLOCK_SIZE_IN_PIXELS + 'px';
 sameboard.style.width = columnCount * BLOCK_SIZE_IN_PIXELS + 'px';
 sametitleblock.style.width = columnCount * BLOCK_SIZE_IN_PIXELS + 'px';
@@ -254,6 +271,23 @@ var Column = {
   }
 };
 
+// Check if done.
+function anyLegalPlays() {
+  var column = rootColumn;
+  while (column) {
+    var block = column.baseBlock;
+    while (block) {
+      if (!isSingleBlock(block)) {
+        return true;
+      }
+
+      block = block.nextBlock;
+    }
+    column = column.nextColumn;
+  }
+  return false;
+}
+
 
 // Starts the game.
 function start() {
@@ -297,6 +331,7 @@ function appendBlock(parentColumn, baseBlock, columnNumber, blockHeight) {
   blockDiv.className = 'block';
   var colorIndex = Math.floor(Math.random() * 5);
   var color = COLORS[colorIndex];
+  blockDiv.innerText = LETTERS[colorIndex];
   blockDiv.className += ' ' + color;
   if (isMobile) {
     blockDiv.className += ' mobileBlockSizes';
@@ -404,6 +439,7 @@ function collapseBoard() {
 // Resets the score to 0.
 function resetScore() {
   samescore.innerHTML = '0';
+  document.querySelector("#sameover").style.visibility = "hidden";
 }
 
 
@@ -438,7 +474,7 @@ function getSeed() {
 
 
 // Start the game.
-window.onload = function() {
+function startGame() {
   start();
 
   // Remove 'same' blocks when a block is clicked.
@@ -461,6 +497,10 @@ window.onload = function() {
         killBlockAndSame(block);
 	updatePointsAvailable(blockRemovalCount);
       }
+
+      if (!anyLegalPlays()) {
+        document.querySelector("#sameover").style.visibility = "visible";
+      }
     }
   };
 
@@ -475,3 +515,10 @@ window.onload = function() {
     start();
   }
 };
+
+startGame();
+};
+
+// Give the page plenty of time to load.
+// Kindle Fire sometimes renders small board if we execute immediate onload.
+window.onload = setTimeout(function() { SameGame(); }, 500);

@@ -1,3 +1,19 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  margin-left: 5px;
+  min-height: 200px;
+  width: calc(100% - 5px);
+}
+
+#sameover {
+  font-size: 200%;
+  font-family: Impact;
+  position: relative;
+  bottom: 5px;
+  visibility: hidden;
+}
+
 #samescreenshot {
   position: absolute;
   left: -1000px;
@@ -5,7 +21,9 @@
 }
 
 #sametitleblock {
+  padding-bottom: 5px;
   position: relative;
+  top: 5px;
 }
 
 .headerSize {
@@ -23,12 +41,10 @@
 
 #startbutton {
   cursor: pointer;
-  margin-left: 50px;
 }
 
 #restartbutton {
   cursor: pointer;
-  margin-left: 50px;
 }
 
 .headerSize#samepoints {
@@ -46,7 +62,7 @@
 }
 
 .headerSize#samescore {
-  bottom: 15px;
+  bottom: 10px;
   font-family: 'Cantora One';
   position: absolute;
   right: 0px;
@@ -63,21 +79,26 @@
   background-color: #00bf00;
   border: black solid 1px;
   position: relative;
+  display: table;
 }
 
 #sameattributionblock {
+  display: none;
   position: relative;
   top: 5px;
 }
 
 #samesrcbundle {
+  display: none;
   float: right;
 }
 
 .block {
+  display: table-cell;
   font-weight: bold;
   position: absolute;
   text-align: center;
+  vertical-align: middle;
 }
 
 .desktopBlockSizes {
@@ -95,34 +116,19 @@
 .red {
   background-color: red; 
 }
-.red:before {
-  content: 'B';
-}
 
 .yellow {
   background-color: yellow;
-}
-.yellow:before {
-  content: 'D';
 }
 
 .cyan {
   background-color: #00f0ed;
 }
-.cyan:before {
-  content: 'E';
-}
 
 .blue {
   background-color: blue;
 }
-.blue:before {
-  content: 'A';
-}
 
 .magenta {
   background-color: #ff00ff;
-}
-.magenta:before {
-  content: 'C';
 }

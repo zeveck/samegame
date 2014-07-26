@@ -26,3 +26,7 @@ Made it so that the src link floats right.
 Moved the screenshot out of the browser view instead of hidden behind the board.
 Fixed animation bug in column slide so that they now slide at even speed even if multiple columns being removed.
 Now previews the blocks to be removed and gives you the value of the removal; requires second click to actually remove.
+
+// v1.4 -- July 26, 2014
+
+Tweaked to support Android mobile app and Kindle Fire browser.
